@@ -26,16 +26,16 @@ namespace Hubla.Sales.API.Controllers
             IUseCase<CreateSaleInput, CreateSaleOutput> useCase,
             CancellationToken cancellationToken)
         {
+            CreateSaleInput input;
             using (var memoryStream = new MemoryStream())
             {
                 await file.CopyToAsync(memoryStream);
                 var buffer = memoryStream.ToArray();
-                var input = CreateSaleInput.Create(buffer);
-
-                var output = await useCase.ExecuteAsync(input, cancellationToken);
-
-                return Ok();
+                input = CreateSaleInput.Create(buffer);
             }
+            var output = await useCase.ExecuteAsync(input, cancellationToken);
+
+            return Ok();
         }
     }
 }

@@ -4,14 +4,14 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
 {
     public sealed class CreateSaleInput : IInput
     {
-        public byte[] Buffer { get; set; }
+        public byte[] File { get; set; }
 
-        public CreateSaleInput(byte[] buffer)
+        public CreateSaleInput(byte[] file)
         {
-            Buffer = buffer;
+            File = file;
         }
 
-        public static CreateSaleInput Create(byte[] buffer)
-            => new(buffer);
+        public static CreateSaleInput Create(byte[] file)
+            => new(file);
     }
 }

@@ -26,7 +26,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
             if (!_validatorService.ValidateAndNotifyIfError(input))
                 return CreateSaleOutput.Empty;
 
-            var streamReader = new StreamReader(new MemoryStream(input.Buffer));
+            var streamReader = new StreamReader(new MemoryStream(input.File));
             var saleList = new List<Sale>();
 
             while (!streamReader.EndOfStream)

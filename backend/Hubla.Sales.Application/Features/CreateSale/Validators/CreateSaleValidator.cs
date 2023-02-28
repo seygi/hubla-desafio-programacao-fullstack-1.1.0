@@ -9,7 +9,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.Validators
 
         public CreateSaleValidator()
         {
-            RuleFor(i => i.Buffer)
+            RuleFor(i => i.File)
                 .NotEmpty()
                 .WithMessage(EmptyPropertyErrorMessage)
                 .NotNull()
