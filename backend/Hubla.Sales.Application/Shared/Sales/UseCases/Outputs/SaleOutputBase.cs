@@ -3,7 +3,7 @@ using Hubla.Sales.Application.Shared.Sellers.UseCases.Outputs;
 
 namespace Hubla.Sales.Application.Shared.Sales.UseCases.Outputs
 {
-    public abstract class SaleOutputBase
+    public class SaleOutputBase
     {
         public int Id { get; set; }
         public SaleType SaleType { get; set; }
@@ -21,5 +21,7 @@ namespace Hubla.Sales.Application.Shared.Sales.UseCases.Outputs
             Value = value;
             Seller = seller;
         }
+        public static SaleOutputBase Create(int id, SaleType saleType, DateTime date, string description, double value, SellerOutputBase seller) =>
+            new(id, saleType, date, description, value, seller);
     }
 }

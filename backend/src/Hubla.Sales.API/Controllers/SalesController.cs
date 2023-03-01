@@ -1,4 +1,5 @@
 ﻿using Hubla.Sales.API.Transport.V1.GetSales;
+using Hubla.Sales.API.Transport.V1.GetSellers;
 using Hubla.Sales.Application.Features.CreateSale.UseCase;
 using Hubla.Sales.Application.Features.GetSales.UseCase;
 using Hubla.Sales.Application.Shared.UseCase;

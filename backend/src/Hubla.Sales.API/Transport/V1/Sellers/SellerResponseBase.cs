@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Hubla.Sales.API.Transport.V1.GetSales
+namespace Hubla.Sales.API.Transport.V1.Sellers
 {
-    public sealed class GetSellerResponse
+    public abstract class SellerResponseBase
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
@@ -10,13 +10,10 @@ namespace Hubla.Sales.API.Transport.V1.GetSales
         public string Name { get; set; }
 
         [JsonConstructor]
-        public GetSellerResponse(int id, string name)
+        public SellerResponseBase(int id, string name)
         {
             Id = id;
             Name = name;
         }
-
-        public static GetSellerResponse Create(int id, string name) =>
-            new(id, name);
     }
 }
