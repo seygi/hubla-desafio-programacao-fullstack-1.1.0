@@ -13,7 +13,7 @@ namespace Hubla.Sales.Application.Features.GetSales.UseCase
         {
             _salesOutput = new List<GetSalesOutput>();
             foreach (var sale in sales)
-                _salesOutput.Add(GetSalesOutput.Create(sale.Id, sale.SaleType, sale.Date, sale.Description, sale.Value, sale.SalesManName));
+                _salesOutput.Add(GetSalesOutput.Create(sale.Id, sale.SaleType, sale.Date, sale.Description, sale.Value, sale.SellerName));
         }
 
         public static GetSalesListOutput Create(IEnumerable<Sale> sales) => new(sales ?? Array.Empty<Sale>());

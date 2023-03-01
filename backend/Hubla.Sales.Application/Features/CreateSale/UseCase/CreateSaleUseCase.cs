@@ -69,7 +69,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
             if (!double.TryParse(saleString.Substring(56, 10), out var value))
                 return false;
             value = value / 100.0;
-            var salesmanName = saleString.Substring(66).Trim();
+            var sellerName = saleString.Substring(66).Trim();
 
 
             sale = new Sale
@@ -79,7 +79,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
                 SaleType = (SaleType)type,
                 Description = description,
                 Value = value,
-                SalesManName = salesmanName
+                SellerName = sellerName
             };
 
             return true;

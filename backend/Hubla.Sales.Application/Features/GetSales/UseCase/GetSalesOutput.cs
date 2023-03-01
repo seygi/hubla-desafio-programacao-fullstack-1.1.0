@@ -9,20 +9,20 @@ namespace Hubla.Sales.Application.Features.GetSales.UseCase
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public double Value { get; set; }
-        public string SalesManName { get; set; }
+        public string SellerName { get; set; }
 
-        private GetSalesOutput(int id, SaleType saleType, DateTime date, string description, double value, string salesManName)
+        private GetSalesOutput(int id, SaleType saleType, DateTime date, string description, double value, string sellerName)
         {
             Id = id;
             SaleType = saleType;
             Date = date;
             Description = description;
             Value = value;
-            SalesManName = salesManName;
+            SellerName = sellerName;
         }
 
-        public static GetSalesOutput Create(int id, SaleType saleType, DateTime date, string description, double value, string salesmanName) =>
-            new(id, saleType, date, description, value, salesmanName);
+        public static GetSalesOutput Create(int id, SaleType saleType, DateTime date, string description, double value, string SellerName) =>
+            new(id, saleType, date, description, value, SellerName);
     }
 
 }
