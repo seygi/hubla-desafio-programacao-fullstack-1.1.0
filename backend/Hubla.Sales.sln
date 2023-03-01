@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{18041953-050
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5204B471-65B8-4523-A186-08724AD720A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubla.Sales.Application", "Hubla.Sales.Application\Hubla.Sales.Application.csproj", "{1D882D35-7156-4313-A403-3C1CE352BBAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hubla.Sales.Application", "Hubla.Sales.Application\Hubla.Sales.Application.csproj", "{1D882D35-7156-4313-A403-3C1CE352BBAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{362135A0-AD5A-45C3-A5B7-31B63105A30F}"
 EndProject
@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubla.Sales.Tests.UNit", "test\Hubla.Sales.Tests.UNit\Hubla.Sales.Tests.UNit.csproj", "{03263B04-2352-48B4-BB09-F7544CFAA3C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{1D882D35-7156-4313-A403-3C1CE352BBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D882D35-7156-4313-A403-3C1CE352BBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D882D35-7156-4313-A403-3C1CE352BBAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03263B04-2352-48B4-BB09-F7544CFAA3C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03263B04-2352-48B4-BB09-F7544CFAA3C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03263B04-2352-48B4-BB09-F7544CFAA3C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03263B04-2352-48B4-BB09-F7544CFAA3C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{1D882D35-7156-4313-A403-3C1CE352BBAE} = {362135A0-AD5A-45C3-A5B7-31B63105A30F}
 		{362135A0-AD5A-45C3-A5B7-31B63105A30F} = {18041953-0504-4352-B071-0B378CFDF39C}
 		{7DDD2208-E5DE-4EA5-807B-DC3F0CB0E0C1} = {18041953-0504-4352-B071-0B378CFDF39C}
+		{03263B04-2352-48B4-BB09-F7544CFAA3C0} = {5204B471-65B8-4523-A186-08724AD720A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EC88C96-7D55-4160-9E14-5867B5370075}
