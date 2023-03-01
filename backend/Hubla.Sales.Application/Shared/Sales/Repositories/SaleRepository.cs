@@ -16,7 +16,7 @@ namespace Hubla.Sales.Application.Shared.Sales.Repositories
 
         public async Task<IList<Sale>> ListAsync()
         {
-            return await _dataContext.Sales.ToListAsync();
+            return await _dataContext.Sales.Include(u => u.Seller).ToListAsync();
         }
 
         public async Task<OperationResult> SaveAsync(IList<Sale> sales)

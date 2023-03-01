@@ -2,6 +2,7 @@
 using Hubla.Sales.Application.Shared.Sales.Entities;
 using Hubla.Sales.Application.Shared.Sales.Enums;
 using Hubla.Sales.Application.Shared.Sales.Repositories;
+using Hubla.Sales.Application.Shared.Sellers.Entities;
 using Hubla.Sales.Application.Shared.UseCase;
 using Hubla.Sales.Application.Shared.Validator;
 using System.Net;
@@ -13,12 +14,14 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
         private readonly IValidatorService<CreateSaleInput> _validatorService;
         private readonly INotificationContext _notificationContext;
         private readonly ISaleRepository _saleRepository;
+        private readonly ISellerRepository _sellerRepository;
 
-        public CreateSaleUseCase(IValidatorService<CreateSaleInput> validatorService, INotificationContext notificationContext, ISaleRepository saleRepository)
+        public CreateSaleUseCase(IValidatorService<CreateSaleInput> validatorService, INotificationContext notificationContext, ISaleRepository saleRepository, ISellerRepository sellerRepository)
         {
             _validatorService = validatorService;
             _notificationContext = notificationContext;
             _saleRepository = saleRepository;
+            _sellerRepository = sellerRepository;
         }
 
         public async Task<CreateSaleOutput> ExecuteAsync(CreateSaleInput input, CancellationToken cancellationToken)
@@ -38,11 +41,17 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
                     return CreateSaleOutput.Empty;
                 }
 
-                if (!TryParseToSale(saleString, out var sale))
+                if (!TryParseToSale(saleString, out var sale, out var sellerName))
                 {
                     _notificationContext.Create(HttpStatusCode.BadRequest, "File with invalid data");
                     return CreateSaleOutput.Empty;
                 }
+
+                var seller = await _sellerRepository.GetByNameAsync(sellerName);
+                if (seller == null)
+                    seller = await _sellerRepository.SaveAsync(new Seller { Name = sellerName });
+
+                sale.Seller = seller;
 
                 saleList.Add(sale);
             }
@@ -57,9 +66,10 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
             return CreateSaleOutput.Create(true);
         }
 
-        private static bool TryParseToSale(string? saleString, out Sale sale)
+        private bool TryParseToSale(string? saleString, out Sale sale, out string sellerName)
         {
             sale = new Sale();
+            sellerName = null;
 
             if (!int.TryParse(saleString.Substring(0, 1), out var type))
                 return false;
@@ -69,8 +79,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
             if (!double.TryParse(saleString.Substring(56, 10), out var value))
                 return false;
             value = value / 100.0;
-            var sellerName = saleString.Substring(66).Trim();
-
+            sellerName = saleString.Substring(66).Trim();
 
             sale = new Sale
             {
@@ -78,8 +87,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
                 Date = date,
                 SaleType = (SaleType)type,
                 Description = description,
-                Value = value,
-                SellerName = sellerName
+                Value = value
             };
 
             return true;

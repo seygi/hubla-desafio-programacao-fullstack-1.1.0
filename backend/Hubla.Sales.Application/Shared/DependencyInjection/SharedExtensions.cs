@@ -24,6 +24,7 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
                .AddPostgre(configuration)
                .AddValidatorService()
                .AddSaleDependencyInjections()
+               .AddSellerDependencyInjections()
                .AddNotificationDependencyInjections();
         }
 
@@ -65,6 +66,13 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
         private static IServiceCollection AddSaleDependencyInjections(this IServiceCollection services)
         {
             services.TryAddScoped<ISaleRepository, SaleRepository>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddSellerDependencyInjections(this IServiceCollection services)
+        {
+            services.TryAddScoped<ISellerRepository, SellerRepository>();
 
             return services;
         }

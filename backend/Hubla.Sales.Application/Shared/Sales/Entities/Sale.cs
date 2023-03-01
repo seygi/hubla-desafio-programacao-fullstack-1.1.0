@@ -1,4 +1,5 @@
 using Hubla.Sales.Application.Shared.Sales.Enums;
+using Hubla.Sales.Application.Shared.Sellers.Entities;
 
 namespace Hubla.Sales.Application.Shared.Sales.Entities
 {
@@ -9,6 +10,6 @@ namespace Hubla.Sales.Application.Shared.Sales.Entities
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public double Value { get; set; }
-        public string SellerName { get; set; }
+        public Seller Seller { get; set; }
     }
 }

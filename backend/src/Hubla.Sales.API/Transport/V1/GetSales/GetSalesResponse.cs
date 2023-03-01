@@ -16,22 +16,22 @@ namespace Hubla.Sales.API.Transport.V1.GetSales
         public string Description { get; set; }
         [JsonPropertyName("value")]
         public double Value { get; set; }
-        [JsonPropertyName("sellerName")]
-        public string SellerName { get; set; }
+        [JsonPropertyName("seller")]
+        public GetSellerResponse Seller { get; set; }
 
         [JsonConstructor]
-        public GetSalesResponse(int id, SaleType saleType, DateTime date, string description, double value, string sellerName)
+        public GetSalesResponse(int id, SaleType saleType, DateTime date, string description, double value, GetSellerResponse seller)
         {
             Id = id;
             SaleType = saleType;
             Date = date;
             Description = description;
             Value = value;
-            SellerName = sellerName;
+            Seller = seller;
         }
 
         public static IList<GetSalesResponse> Create(GetSalesListOutput outputUseCase) =>
-            outputUseCase.Select(lnq => new GetSalesResponse(lnq.Id, lnq.SaleType, lnq.Date, lnq.Description, lnq.Value, lnq.SellerName))
+            outputUseCase.Select(lnq => new GetSalesResponse(lnq.Id, lnq.SaleType, lnq.Date, lnq.Description, lnq.Value, GetSellerResponse.Create(lnq.Seller.Id, lnq.Seller.Name)))
                .ToList();
     }
 }
