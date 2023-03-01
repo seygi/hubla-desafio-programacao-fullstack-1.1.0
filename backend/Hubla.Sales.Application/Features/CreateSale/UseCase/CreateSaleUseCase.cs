@@ -76,9 +76,9 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
             if (!DateTime.TryParse(saleString.Substring(1, 25), out var date))
                 return false;
             var description = saleString.Substring(26, 30).Trim();
-            if (!double.TryParse(saleString.Substring(56, 10), out var value))
+            if (!decimal.TryParse(saleString.Substring(56, 10), out var value))
                 return false;
-            value = value / 100.0;
+            value = value / 100;
             sellerName = saleString.Substring(66).Trim();
 
             sale = new Sale

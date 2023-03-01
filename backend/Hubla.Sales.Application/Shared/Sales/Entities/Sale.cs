@@ -9,7 +9,7 @@ namespace Hubla.Sales.Application.Shared.Sales.Entities
         public SaleType SaleType { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public double Value { get; set; }
+        public decimal Value { get; set; }
         public Seller Seller { get; set; }
     }
 }

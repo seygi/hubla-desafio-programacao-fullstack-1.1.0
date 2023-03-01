@@ -9,7 +9,7 @@ namespace Hubla.Sales.API.Transport.V1.GetSales
     {
         public GetSalesSellerResponse Seller { get; set; }
 
-        public GetSalesResponse(int id, SaleType saleType, DateTime date, string description, double value, GetSalesSellerResponse seller)
+        public GetSalesResponse(int id, SaleType saleType, DateTime date, string description, decimal value, GetSalesSellerResponse seller)
             : base(id, saleType, date, description, value)
         {
             Seller = seller;

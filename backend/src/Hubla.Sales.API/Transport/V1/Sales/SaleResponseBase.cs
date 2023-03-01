@@ -14,10 +14,10 @@ namespace Hubla.Sales.API.Transport.V1.Sales
         [JsonPropertyName("description")]
         public string Description { get; set; }
         [JsonPropertyName("value")]
-        public double Value { get; set; }
+        public decimal Value { get; set; }
 
         [JsonConstructor]
-        public SaleResponseBase(int id, SaleType saleType, DateTime date, string description, double value)
+        public SaleResponseBase(int id, SaleType saleType, DateTime date, string description, decimal value)
         {
             Id = id;
             SaleType = saleType;

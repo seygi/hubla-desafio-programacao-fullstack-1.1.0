@@ -6,7 +6,7 @@ namespace Hubla.Sales.API.Transport.V1.GetSellers
 {
     public sealed class GetSellerSalesResponse : SaleResponseBase
     {
-        public GetSellerSalesResponse(int id, SaleType saleType, DateTime date, string description, double value)
+        public GetSellerSalesResponse(int id, SaleType saleType, DateTime date, string description, decimal value)
             : base(id, saleType, date, description, value)
         {
         }
