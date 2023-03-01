@@ -1,4 +1,5 @@
 ﻿using Hubla.Sales.Application.Features.CreateSale.DependencyInjection;
+using Hubla.Sales.Application.Features.GetSales.DependencyInjection;
 using Hubla.Sales.Application.Shared.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,8 @@ namespace Hubla.Sales.Application
         {
             services
                .AddShared(configuration)
-               .AddCreateSale();
+               .AddCreateSale()
+               .AddGetSales();
 
             return services;
         }
