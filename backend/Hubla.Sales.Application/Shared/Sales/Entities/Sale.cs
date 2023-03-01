@@ -9,6 +9,6 @@ namespace Hubla.Sales.Application.Shared.Sales.Entities
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public double Value { get; set; }
-        public string SalesmanName { get; set; }
+        public string SalesManName { get; set; }
     }
 }
