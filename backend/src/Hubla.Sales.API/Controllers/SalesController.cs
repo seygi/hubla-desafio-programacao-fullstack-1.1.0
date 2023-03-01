@@ -1,4 +1,6 @@
-﻿using Hubla.Sales.Application.Features.CreateSale.UseCase;
+﻿using Hubla.Sales.API.Transport.V1.GetSales;
+using Hubla.Sales.Application.Features.CreateSale.UseCase;
+using Hubla.Sales.Application.Features.GetSales.UseCase;
 using Hubla.Sales.Application.Shared.UseCase;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,15 +13,22 @@ namespace Hubla.Sales.API.Controllers
     public class SalesController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<string> Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAll([FromServices]
+            IUseCase<DefaultInput, GetSalesListOutput> useCase,
+            CancellationToken cancellationToken)
         {
-            return new string[] { "value1", "value2" };
+            var output = await useCase.ExecuteAsync(DefaultInput.Default, cancellationToken);
+            var result = GetSalesResponse.Create(output);
+
+            return Ok(result);
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateSaleAsync(IFormFile file,
             [FromServices]
