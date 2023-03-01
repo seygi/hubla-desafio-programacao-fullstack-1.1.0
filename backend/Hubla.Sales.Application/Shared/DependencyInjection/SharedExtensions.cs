@@ -3,10 +3,13 @@ using Hubla.Sales.Application.Shared.Data.Sql;
 using Hubla.Sales.Application.Shared.Notifications;
 using Hubla.Sales.Application.Shared.Sales.Repositories;
 using Hubla.Sales.Application.Shared.Validator;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Diagnostics.CodeAnalysis;
+using Postgre = Hubla.Sales.Application.Shared.Data.Postgre;
+
 
 namespace Hubla.Sales.Application.Shared.DependencyInjection
 {
@@ -18,6 +21,7 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
             return services
                .AddConnectionStrings()
                .AddSqlServer()
+               .AddPostgre(configuration)
                .AddValidatorService()
                .AddSaleDependencyInjections()
                .AddNotificationDependencyInjections();
@@ -35,6 +39,18 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
         {
             services.TryAddSingleton<IDataContext, DataContext>();
             services.TryAddScoped<ISqlService, SqlService>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddPostgre(this IServiceCollection services, IConfiguration configuration)
+        {
+            var connectionStrings = configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>();
+
+            services.AddDbContext<Postgre.DataContext>(
+                options => options.UseNpgsql(connectionStrings.Postgre.GetConnectionString())
+            );
+            //services.TryAddSingleton<Postgre.IDataContext, Postgre.DataContext>();
 
             return services;
         }
