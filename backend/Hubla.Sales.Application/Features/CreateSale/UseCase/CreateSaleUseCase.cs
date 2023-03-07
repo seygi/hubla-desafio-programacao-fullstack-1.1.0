@@ -60,7 +60,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
 
             if (!operationResult.HasRowsAffected)
             {
-                _notificationContext.Create(HttpStatusCode.InternalServerError, "Falha durante a inclusão do sale no banco de dados.");
+                _notificationContext.Create(HttpStatusCode.InternalServerError, "Fail on insert sales in database.");
                 return CreateSaleOutput.Empty;
             }
             return CreateSaleOutput.Create(true);

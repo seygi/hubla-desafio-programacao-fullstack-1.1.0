@@ -1,5 +1,4 @@
 ﻿using Hubla.Sales.Application.Shared.Configurations;
-using Hubla.Sales.Application.Shared.Data.Sql;
 using Hubla.Sales.Application.Shared.Notifications;
 using Hubla.Sales.Application.Shared.Sales.Repositories;
 using Hubla.Sales.Application.Shared.Validator;
@@ -20,7 +19,6 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
         {
             return services
                .AddConnectionStrings()
-               .AddSqlServer()
                .AddPostgre(configuration)
                .AddValidatorService()
                .AddSaleDependencyInjections()
@@ -36,14 +34,6 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
             return services;
         }
 
-        private static IServiceCollection AddSqlServer(this IServiceCollection services)
-        {
-            services.TryAddSingleton<IDataContext, DataContext>();
-            services.TryAddScoped<ISqlService, SqlService>();
-
-            return services;
-        }
-
         private static IServiceCollection AddPostgre(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionStrings = configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>();
@@ -51,7 +41,6 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
             services.AddDbContext<Postgre.DataContext>(
                 options => options.UseNpgsql(connectionStrings.Postgre.GetConnectionString())
             );
-            //services.TryAddSingleton<Postgre.IDataContext, Postgre.DataContext>();
 
             return services;
         }
