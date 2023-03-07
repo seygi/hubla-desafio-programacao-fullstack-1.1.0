@@ -3,9 +3,11 @@ using Hubla.Sales.Application.Features.CreateSale.UseCase;
 using Hubla.Sales.Application.Features.GetSales.UseCase;
 using Hubla.Sales.Application.Shared.UseCase;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Hubla.Sales.API.Controllers
 {
+    [ExcludeFromCodeCoverage]
     [Route("api/[controller]")]
     [ApiController]
     public class SalesController : ControllerBase
