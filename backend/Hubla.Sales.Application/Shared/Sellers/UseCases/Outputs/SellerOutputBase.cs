@@ -1,5 +1,8 @@
-﻿namespace Hubla.Sales.Application.Shared.Sellers.UseCases.Outputs
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Hubla.Sales.Application.Shared.Sellers.UseCases.Outputs
 {
+    [ExcludeFromCodeCoverage]
     public abstract class SellerOutputBase
     {
         public int Id { get; set; }

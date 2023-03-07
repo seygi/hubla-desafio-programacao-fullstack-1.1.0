@@ -1,8 +1,8 @@
-﻿using System.Text;
-using System.Xml.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Hubla.Sales.Application.Shared.Notifications
 {
+    [ExcludeFromCodeCoverage]
     public sealed class NotificationErrors
     {
         private readonly IDictionary<string, IList<string>> _errorMessages = new Dictionary<string, IList<string>>();

@@ -1,11 +1,8 @@
 ﻿using Hubla.Sales.API.Transport.V1.GetSales;
-using Hubla.Sales.API.Transport.V1.GetSellers;
 using Hubla.Sales.Application.Features.CreateSale.UseCase;
 using Hubla.Sales.Application.Features.GetSales.UseCase;
 using Hubla.Sales.Application.Shared.UseCase;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Hubla.Sales.API.Controllers
 {
@@ -43,7 +40,7 @@ namespace Hubla.Sales.API.Controllers
                 var buffer = memoryStream.ToArray();
                 input = CreateSaleInput.Create(buffer);
             }
-            var output = await useCase.ExecuteAsync(input, cancellationToken);
+            await useCase.ExecuteAsync(input, cancellationToken);
 
             return Ok();
         }

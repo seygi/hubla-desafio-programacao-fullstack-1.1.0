@@ -27,7 +27,7 @@ namespace Hubla.Sales.Application.Shared.Validator
                 notificationErrors.Add(error.PropertyName, error.ErrorMessage);
             }
 
-            _logger.LogInformation("Input {Input} inválido", nameof(input));
+            _logger.LogInformation("Input {Input} invalid", nameof(input));
             _notificationContext.Create(HttpStatusCode.BadRequest, notificationErrors);
 
             return result.IsValid;
@@ -45,7 +45,7 @@ namespace Hubla.Sales.Application.Shared.Validator
                     notificationErrors.Add(error.PropertyName, error.ErrorMessage);
                 }
 
-                _logger.LogInformation("Input {Input} inválido", nameof(input));
+                _logger.LogInformation("Input {Input} invalid", nameof(input));
 
                 _notificationContext.Create(HttpStatusCode.BadRequest, notificationErrors);
             }

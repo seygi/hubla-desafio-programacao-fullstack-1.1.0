@@ -1,5 +1,4 @@
-﻿using Hubla.Sales.Application.Shared.Models;
-using Hubla.Sales.Application.Shared.Sellers.Entities;
+﻿using Hubla.Sales.Application.Shared.Sellers.Entities;
 
 namespace Hubla.Sales.Application.Shared.Sales.Repositories
 {

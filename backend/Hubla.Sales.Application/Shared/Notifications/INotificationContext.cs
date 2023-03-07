@@ -1,7 +1,9 @@
-﻿using System.Net;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Net;
 
 namespace Hubla.Sales.Application.Shared.Notifications
 {
+    [ExcludeFromCodeCoverage]
     public interface INotificationContext
     {
         NotificationErrors Notifications { get; }

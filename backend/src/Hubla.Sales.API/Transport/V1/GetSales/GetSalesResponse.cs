@@ -7,6 +7,7 @@ namespace Hubla.Sales.API.Transport.V1.GetSales
 {
     public sealed class GetSalesResponse : SaleResponseBase
     {
+        [JsonPropertyName("seller")]
         public GetSalesSellerResponse Seller { get; set; }
 
         public GetSalesResponse(int id, SaleType saleType, DateTime date, string description, decimal value, GetSalesSellerResponse seller)

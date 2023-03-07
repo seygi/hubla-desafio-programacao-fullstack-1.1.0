@@ -1,9 +1,11 @@
 ﻿using Hubla.Sales.Application.Shared.Sales.Enums;
 using Hubla.Sales.Application.Shared.Sellers.UseCases.Outputs;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Hubla.Sales.Application.Shared.Sales.UseCases.Outputs
 {
-    public class SaleOutputBase
+    [ExcludeFromCodeCoverage]
+    public abstract class SaleOutputBase
     {
         public int Id { get; set; }
         public SaleType SaleType { get; set; }
@@ -21,7 +23,5 @@ namespace Hubla.Sales.Application.Shared.Sales.UseCases.Outputs
             Value = value;
             Seller = seller;
         }
-        public static SaleOutputBase Create(int id, SaleType saleType, DateTime date, string description, decimal value, SellerOutputBase seller) =>
-            new(id, saleType, date, description, value, seller);
     }
 }

@@ -1,9 +1,11 @@
 using Hubla.Sales.API.Filters;
 using Hubla.Sales.Application;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace Hubla.Sales.API
 {
+    [ExcludeFromCodeCoverage]
     public class Program
     {
         public static void Main(string[] args)
@@ -34,8 +36,6 @@ namespace Hubla.Sales.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
-
 
             var app = builder.Build();
 
