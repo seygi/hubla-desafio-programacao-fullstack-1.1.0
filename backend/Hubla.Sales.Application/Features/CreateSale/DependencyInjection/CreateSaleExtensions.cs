@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using Hubla.Sales.Application.Features.CreateSale.UseCase;
 using Hubla.Sales.Application.Features.CreateSale.Validators;
-using Hubla.Sales.Application.Features.GetSales.UseCase;
 using Hubla.Sales.Application.Shared.UseCase;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

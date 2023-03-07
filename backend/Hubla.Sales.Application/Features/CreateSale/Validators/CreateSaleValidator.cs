@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Hubla.Sales.Application.Features.CreateSale.UseCase;
-using Hubla.Sales.Application.Features.GetSales.UseCase;
 
 namespace Hubla.Sales.Application.Features.CreateSale.Validators
 {
