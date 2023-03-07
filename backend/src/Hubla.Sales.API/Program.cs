@@ -1,5 +1,6 @@
 using Hubla.Sales.API.Filters;
 using Hubla.Sales.Application;
+using System.Text.Json.Serialization;
 
 namespace Hubla.Sales.API
 {
@@ -16,6 +17,10 @@ namespace Hubla.Sales.API
             builder.Services.AddControllers(options =>
             {
                 options.Filters.Add<NotificationFilter>();
+            }).AddJsonOptions(opts =>
+            {
+                var enumConverter = new JsonStringEnumConverter();
+                opts.JsonSerializerOptions.Converters.Add(enumConverter);
             });
             
             /* inicio custom*/
