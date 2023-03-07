@@ -1,4 +1,5 @@
 ﻿using Hubla.Sales.Application.Shared.Configurations;
+using Hubla.Sales.Application.Shared.Data.Postgres;
 using Hubla.Sales.Application.Shared.Notifications;
 using Hubla.Sales.Application.Shared.Sales.Repositories;
 using Hubla.Sales.Application.Shared.Validator;
@@ -7,8 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Diagnostics.CodeAnalysis;
-using Postgre = Hubla.Sales.Application.Shared.Data.Postgre;
-
 
 namespace Hubla.Sales.Application.Shared.DependencyInjection
 {
@@ -38,8 +37,8 @@ namespace Hubla.Sales.Application.Shared.DependencyInjection
         {
             var connectionStrings = configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>();
 
-            services.AddDbContext<Postgre.DataContext>(
-                options => options.UseNpgsql(connectionStrings.Postgre.GetConnectionString())
+            services.AddDbContext<DataContext>(
+                options => options.UseNpgsql(connectionStrings.Postgres.GetConnectionString())
             );
 
             return services;

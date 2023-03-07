@@ -1,6 +1,6 @@
 ﻿namespace Hubla.Sales.Application.Shared.Configurations.DataBase
 {
-    public sealed class Postgre
+    public sealed class Postgres
     {
         public string Server { get; set; }
         public string Port { get; set; }

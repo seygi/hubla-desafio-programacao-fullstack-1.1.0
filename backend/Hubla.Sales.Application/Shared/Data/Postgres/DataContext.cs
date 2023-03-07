@@ -3,10 +3,8 @@ using Hubla.Sales.Application.Shared.Sales.Entities;
 using Hubla.Sales.Application.Shared.Sellers.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using System.Reflection.Emit;
 
-namespace Hubla.Sales.Application.Shared.Data.Postgre
+namespace Hubla.Sales.Application.Shared.Data.Postgres
 {
     public class DataContext : DbContext
     {
@@ -20,11 +18,6 @@ namespace Hubla.Sales.Application.Shared.Data.Postgre
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //builder.Entity<Sale>()
-            //        .HasOne(e => e.Seller)
-            //        .WithOne()
-            //        .HasForeignKey("Sellers");
-
             builder.Entity<Seller>()
                     .HasMany(c => c.Sales)
                     .WithOne(e => e.Seller);

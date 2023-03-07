@@ -1,4 +1,4 @@
-﻿using Hubla.Sales.Application.Shared.Data.Postgre;
+﻿using Hubla.Sales.Application.Shared.Data.Postgres;
 using Hubla.Sales.Application.Shared.Models;
 using Hubla.Sales.Application.Shared.Sales.Entities;
 using Microsoft.EntityFrameworkCore;

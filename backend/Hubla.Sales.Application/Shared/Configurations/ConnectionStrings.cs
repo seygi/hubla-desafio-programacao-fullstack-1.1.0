@@ -2,6 +2,6 @@
 {
     public sealed class ConnectionStrings
     {
-        public DataBase.Postgre Postgre { get; set; }
+        public DataBase.Postgres Postgres { get; set; }
     }
 }
