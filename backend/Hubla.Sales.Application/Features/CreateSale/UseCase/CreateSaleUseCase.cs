@@ -49,7 +49,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
 
                 var seller = await _sellerRepository.GetByNameAsync(sellerName);
                 if (seller == null)
-                    seller = await _sellerRepository.SaveAsync(new Seller { Name = sellerName });
+                    seller = await _sellerRepository.SaveAsync(Seller.Create(sellerName));
 
                 sale.Seller = seller;
 
@@ -68,7 +68,7 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
 
         private bool TryParseToSale(string? saleString, out Sale sale, out string sellerName)
         {
-            sale = new Sale();
+            sale = null;
             sellerName = null;
 
             if (!int.TryParse(saleString.Substring(0, 1), out var type))
@@ -81,15 +81,8 @@ namespace Hubla.Sales.Application.Features.CreateSale.UseCase
             value = value / 100;
             sellerName = saleString.Substring(66).Trim();
 
-            sale = new Sale
-            {
-                Id = 0,
-                Date = date,
-                SaleType = (SaleType)type,
-                Description = description,
-                Value = value
-            };
-
+            sale = Sale.CreateWithoutSeller((SaleType)type, date, description, value);
+            
             return true;
         }
     }
