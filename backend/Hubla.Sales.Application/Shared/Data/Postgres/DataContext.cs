@@ -1,8 +1,6 @@
-﻿using Hubla.Sales.Application.Shared.Configurations;
-using Hubla.Sales.Application.Shared.Sales.Entities;
+﻿using Hubla.Sales.Application.Shared.Sales.Entities;
 using Hubla.Sales.Application.Shared.Sellers.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace Hubla.Sales.Application.Shared.Data.Postgres
 {
@@ -11,7 +9,7 @@ namespace Hubla.Sales.Application.Shared.Data.Postgres
         public virtual DbSet<Sale> Sales => Set<Sale>();
         public virtual DbSet<Seller> Sellers => Set<Seller>();
 
-        public DataContext(DbContextOptions<DataContext> options, IOptions<ConnectionStrings> configuration) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
             Database.EnsureCreated();
         }

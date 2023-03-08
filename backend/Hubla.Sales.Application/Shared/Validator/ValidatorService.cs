@@ -10,9 +10,8 @@ namespace Hubla.Sales.Application.Shared.Validator
     {
         private readonly IValidator<TInput> _validator;
         private readonly INotificationContext _notificationContext;
-        private readonly ILogger<ValidatorService<TInput>> _logger;
 
-        public ValidatorService(IValidator<TInput> validator, INotificationContext notificationContext, ILogger<ValidatorService<TInput>> logger) => (_validator, _notificationContext, _logger) = (validator, notificationContext, logger);
+        public ValidatorService(IValidator<TInput> validator, INotificationContext notificationContext) => (_validator, _notificationContext) = (validator, notificationContext);
 
         public bool ValidateAndNotifyIfError(TInput input)
         {
@@ -27,7 +26,6 @@ namespace Hubla.Sales.Application.Shared.Validator
                 notificationErrors.Add(error.PropertyName, error.ErrorMessage);
             }
 
-            _logger.LogInformation("Input {Input} invalid", nameof(input));
             _notificationContext.Create(HttpStatusCode.BadRequest, notificationErrors);
 
             return result.IsValid;
@@ -44,8 +42,6 @@ namespace Hubla.Sales.Application.Shared.Validator
                 {
                     notificationErrors.Add(error.PropertyName, error.ErrorMessage);
                 }
-
-                _logger.LogInformation("Input {Input} invalid", nameof(input));
 
                 _notificationContext.Create(HttpStatusCode.BadRequest, notificationErrors);
             }
