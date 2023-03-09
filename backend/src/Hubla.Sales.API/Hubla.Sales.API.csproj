@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Hubla.Sales.Application\Hubla.Sales.Application.csproj" />
+    <ProjectReference Include="..\Hubla.Sales.Application\Hubla.Sales.Application.csproj" />
   </ItemGroup>
 
 </Project>

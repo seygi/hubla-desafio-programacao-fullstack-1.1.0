@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Hubla.Sales.Application\Hubla.Sales.Application.csproj" />
     <ProjectReference Include="..\..\src\Hubla.Sales.API\Hubla.Sales.API.csproj" />
+    <ProjectReference Include="..\..\src\Hubla.Sales.Application\Hubla.Sales.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

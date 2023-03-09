@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{18041953-050
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5204B471-65B8-4523-A186-08724AD720A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hubla.Sales.Application", "Hubla.Sales.Application\Hubla.Sales.Application.csproj", "{1D882D35-7156-4313-A403-3C1CE352BBAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hubla.Sales.Application", "src\Hubla.Sales.Application\Hubla.Sales.Application.csproj", "{1D882D35-7156-4313-A403-3C1CE352BBAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{362135A0-AD5A-45C3-A5B7-31B63105A30F}"
 EndProject
