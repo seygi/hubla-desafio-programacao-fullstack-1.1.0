@@ -8,18 +8,14 @@ services:
       POSTGRES_DB: hublasales
     ports:
       - "5432:5432"
-  # backend:
-  #   build: ./backend/
-  #   environment:
-  #     DatabaseServer: "db"
-  #     DatabasePort: "5432"
-  #     DatabaseUser: "postgres"
-  #     DatabasePassword: "admin"
-  #     DatabaseName: "hublasales"
-  #   ports:
-  #     - "5000:80"
-  #   depends_on:
-  #     - db
+  backend:
+    build:
+      context: .
+      dockerfile: backend/src/Hubla.Sales.API/Dockerfile
+    ports:
+      - "5095:80"
+    depends_on:
+      - db
   # frontend:
   #   build: ./frontend/
   #   ports:
