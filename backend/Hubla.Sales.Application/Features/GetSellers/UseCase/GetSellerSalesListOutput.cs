@@ -1,9 +1,6 @@
 ﻿using Hubla.Sales.Application.Features.GetSales.UseCase;
 using Hubla.Sales.Application.Shared.Sales.Entities;
-using Hubla.Sales.Application.Shared.Sales.Enums;
 using Hubla.Sales.Application.Shared.Sales.UseCases.Outputs;
-using Hubla.Sales.Application.Shared.Sellers.Entities;
-using Hubla.Sales.Application.Shared.Sellers.UseCases.Outputs;
 using Hubla.Sales.Application.Shared.UseCase;
 
 namespace Hubla.Sales.Application.Features.GetSellers.UseCase
@@ -16,7 +13,7 @@ namespace Hubla.Sales.Application.Features.GetSellers.UseCase
         {
             _salesOutput = new List<SaleOutputBase>();
             foreach (var sale in sales)
-                _salesOutput.Add(GetSalesOutput.Create(sale.Id, sale.SaleType, sale.Date, sale.Description, sale.Value, GetSalesSellerOutput.Create(sale.Seller.Id, sale.Seller.Name)));
+                _salesOutput.Add(GetSalesOutput.Create(sale.Id, sale.SaleType, sale.Date, sale.Description, sale.Value, null));
         }
 
         public static GetSellerSalesListOutput Create(IEnumerable<Sale> sales) => new(sales ?? Array.Empty<Sale>());

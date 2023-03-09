@@ -5,7 +5,9 @@ using Hubla.Sales.Application.Shared.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Hubla.Sales.Tests.Unit")]
 namespace Hubla.Sales.Application
 {
     [ExcludeFromCodeCoverage]
